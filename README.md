@@ -67,3 +67,6 @@ En esta sección se muestra como correr los tests.
 Este proyecto sigue las convenciones de la [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html).
 
 Ver un ejemplo completo del [uso de docstrings en python según la guía de Google](http://sphinxcontrib-napoleon.readthedocs.org/en/latest/example_google.html#example-google)
+
+## License
+[GPL](https://www.gnu.org/licenses/gpl-3.0.html)
