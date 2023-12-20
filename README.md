@@ -2,7 +2,7 @@
 Safe Function
 ===
 
-[![Coverage Status](https://coveralls.io/repos/abenassi/Project-Example-1/badge.svg?branch=master&service=github)](https://coveralls.io/github/abenassi/Project-Example-1?branch=master)
+[![python.py]](https://github.com/Enocitta/safe_function?branch=master)
 [![Build Status](https://travis-ci.org/abenassi/Project-Example-1.svg)](https://travis-ci.org/abenassi/Project-Example-1)
 Decorador de funciones para debug de Errores de Tipo, en llamadas de tiempo de ejecucion
 
