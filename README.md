@@ -1,8 +1,7 @@
 
-<img src="https://www.python.org/static/img/python-logo.png" alt="Safe Function" width="300px"/>
 
-Safe Function
-===
+<p style='font-size:160%; text-align:center'><img  src="doc/SF-escudo.jpg" alt="Safe Function" width="100px"/></p>
+<div style='font-size:160%; text-align:center;text-decoration: overline; vertical-align:baseline; font-family:courier;'>Safe Function</div>
 
 
 ## Decorador de funciones para debug de Errores de Tipo, en llamadas de tiempo de ejecucion.
