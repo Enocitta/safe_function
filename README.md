@@ -4,26 +4,26 @@
 <div style='font-size:160%; text-align:center;text-decoration: overline; vertical-align:baseline; font-family:courier;'>Safe Function</div>
 
 
-## Decorador de funciones para debug de Errores de Tipo, en llamadas de tiempo de ejecucion.
+## Function decorator for debugging Type Errors in runtime calls.
 
-El siguiente es un simple desarrollo para controlar que las variables que se ingresan en las funciones corresponden con las especificaciones declaradas en el prototipo de la funcion, en caso de no ser asi evita la ejecucuin de la funcion decorada y realiza el trasado de errores por log
-
+The following Project is a simple development to control that the variables that are entered in the functions correspond
+to the specifications declared in the prototype of the function, if not, it avoids the execution of the decorated function and performs error reporting by log
 
 
 **Table of Contents**  
 
-  - [Titulo](#decorador-de-funciones-para-debug-de-errores-de-tipo-en-llamadas-de-tiempo-de-ejecucion)
-  - [Ejemplo](#ejemplo)
-  - [Instalación](#instalaci%C3%B3n)
+  - [Description](#function-decorator-for-debugging-type-errors-in-runtime-calls)
+  - [Example](#example)
+  - [Installation](#installation)
   - [Tests](#tests)
-  - [Convenciones de estilo](#convenciones-de-estilo)
+  - [Style conventions](#convenciones-de-estilo)
   - [License](#license)
 
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Ejemplo
 
-En esta sección se muestra cómo usar el paquete con un ejemplo sencillo.
+## Example
+
+This section shows how to use the package with a simple example.
 
 ```python
 import safe_function as Sf
@@ -36,8 +36,10 @@ funcInt(1,3) --> "OK ,silent log pass ,the function runs normally"
 funcInt(1,"error") --> "the decorator checks for the type error and stops execution"
 
 ```
-El decorador se puede agregar a una funcion que necesite inspeccionar , evitando su ejecucion si es que no cumple con
-los requisitos de invocacion, en caso de utilizarlo en objeto que no sea funcion enviara un `python TypeError`
+
+The decorator can be added to a function that needs to be inspected, preventing its execution if it does not comply.
+the invocation requirements, if used in an object that is not a function it will send a `python TypeError`
+
 ```python
 import safe_function as Sf
 
@@ -48,23 +50,24 @@ class myclass:
 ins1 = myclass --> "TypeError"
 ```
 
-## Instalación
+## Installation
 
-En esta sección se listan los pasos necesarios para instalar el paquete.
+This section lists the steps required to install the package.
 
-- Instalar Python 3 como minimo (se recomienda instalar la version mas reciente)
-
+- Install Python 3 at least (it is recommended to install the most recent version)
 
 
 ## Tests
-Recuerde que las pruebas dependen de el modulo `nose`
-si no lo posee instalelo con 
+
+Remember that the tests depend on the `nose` module
+If you don't have it, install it with... 
 
 `pip install nose`
 
-En la libreria se encuentra el archivo `test_safe_function.py` el cual contiene las pruebas de ejecucuion
-en la terminal de `PyCharm` por ejemplo puede correr
-- `nosetests` (corre todos los tests)
+
+In the library there is the file `test_safe_function.py` which contains the execution tests
+in the `PyCharm` terminal for example you can run
+- `nosetests` (runs all tests)
 ```...........
 ----------------------------------------------------------------------
 Ran 11 tests in 0.003s
@@ -72,11 +75,10 @@ Ran 11 tests in 0.003s
 OK
 ```
  
-## Convenciones de estilo
+## Style conventions
 
-Este proyecto sigue las convenciones de la [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html).
+This project follows the conventions of the [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html).
 
-Ver un ejemplo completo del [uso de docstrings en python según la guía de Google](http://sphinxcontrib-napoleon.readthedocs.org/en/latest/example_google.html#example-google)
-
+See a complete example of [using docstrings in python according to Google's guide](http://sphinxcontrib-napoleon.readthedocs.org/en/latest/example_google.html#example-google)
 ## License
 [GPL](https://www.gnu.org/licenses/gpl-3.0.html)

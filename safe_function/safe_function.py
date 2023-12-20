@@ -6,8 +6,6 @@ logger = logging.getLogger(__name__)
 
 def __check_main_loop(a, dtipe, numTypes, counter):
     if (type(a) is not dtipe.annotation) and (dtipe.annotation != dtipe.empty) and numTypes == 0:
-        # print('variable de tipo incorrecta: "{}", es de Tipo {} cuando el parametro soportado es '
-        #      'de tipo {} '.format(a, type(a), dtipe.annotation))
         logger.warning('variable de tipo incorrecta: "{}", es de Tipo {} cuando el parametro soportado es '
                        'de tipo {} '.format(a, type(a), dtipe.annotation))
         counter = counter + 1
@@ -30,13 +28,13 @@ def safe_function(function):
         counter = 0
         paramTipe = {"POSITIONAL_ONLY": 0, "POSITIONAL_OR_KEYWORD": 0, "VAR_POSITIONAL": 0, "KEYWORD_ONLY": 0,
                      "VAR_KEYWORD": 0, }
-        Argumentos = []
+        arguments = []
         defaultParam = 0
         if inspect.isfunction(function):
 
-            dictvar = inspect.signature(function).parameters
-            for dido in dictvar.values():  # contar tipos de parametros
-                Argumentos.append(
+            param_function = inspect.signature(function).parameters
+            for dido in param_function.values():  # Count types of parameters to determine minimum necessary parameters.
+                arguments.append(
                     {"name": dido.name, "default": dido.default, "annotation": dido.annotation, "empty": dido.empty,
                      "kind": dido.kind, })
                 if dido.kind == dido.POSITIONAL_ONLY:
@@ -53,17 +51,16 @@ def safe_function(function):
                 if dido.default is not dido.empty:
                     defaultParam += 1
 
-            if (len(Argumentos) - (paramTipe["VAR_POSITIONAL"] + paramTipe["KEYWORD_ONLY"] + paramTipe[
-                "VAR_KEYWORD"] + defaultParam)) <= args.__len__():
-                # print("ok puede chequear los valores")
+            if ((len(arguments) - (paramTipe["VAR_POSITIONAL"] + paramTipe["KEYWORD_ONLY"] +
+                                   paramTipe["VAR_KEYWORD"] + defaultParam)) <= args.__len__()):
+
                 posvar = 0
-                # intento de verificacion de coiuncidencia de variables y tipo
-                for a, dtipe in zip(args, dictvar.values()):
+
+                for a, dtipe in zip(args, param_function.values()):
 
                     numTypes = 0
                     annType = dtipe.annotation
-                    if type(annType) is not type:
-                        numTypes = len(tuple(annType))
+                    numTypes = len(tuple(annType)) if type(annType) is not type else numTypes
 
                     if (dtipe.kind == dtipe.POSITIONAL_OR_KEYWORD) or (dtipe.kind == dtipe.POSITIONAL_ONLY):
 
@@ -90,7 +87,7 @@ def safe_function(function):
 
             else:  # esta algo mal con la invocacion y sus parametros
                 # print(  "hay algo mal en la invocacion de '{}'".format(function.__str__()) )
-                logger.error("Faltan argumentos obligatorios en la invocacion de '{}'".format(function.__name__))
+                logger.error("Faltan arguments obligatorios en la invocacion de '{}'".format(function.__name__))
                 return
 
         else:
