@@ -1,23 +1,24 @@
 
+<img src="https://www.python.org/static/img/python-logo.png" alt="Safe Function" width="300px"/>
+
 Safe Function
 ===
 
-[![python.py]](https://github.com/Enocitta/safe_function?branch=master)
-[![Build Status](https://travis-ci.org/abenassi/Project-Example-1.svg)](https://travis-ci.org/abenassi/Project-Example-1)
-Decorador de funciones para debug de Errores de Tipo, en llamadas de tiempo de ejecucion
+
+## Decorador de funciones para debug de Errores de Tipo, en llamadas de tiempo de ejecucion.
 
 El siguiente es un simple desarrollo para controlar que las variables que se ingresan en las funciones corresponden con las especificaciones declaradas en el prototipo de la funcion, en caso de no ser asi evita la ejecucuin de la funcion decorada y realiza el trasado de errores por log
 
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [One liner que dice qué es el proyecto](#one-liner-que-dice-qu%C3%A9-es-el-proyecto)
+**Table of Contents**  
+
+  - [Titulo](#decorador-de-funciones-para-debug-de-errores-de-tipo-en-llamadas-de-tiempo-de-ejecucion)
   - [Ejemplo](#ejemplo)
   - [Instalación](#instalaci%C3%B3n)
   - [Tests](#tests)
   - [Convenciones de estilo](#convenciones-de-estilo)
+  - [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -36,32 +37,42 @@ funcInt(1,3) --> "OK ,silent log pass ,the function runs normally"
 funcInt(1,"error") --> "the decorator checks for the type error and stops execution"
 
 ```
+El decorador se puede agregar a una funcion que necesite inspeccionar , evitando su ejecucion si es que no cumple con
+los requisitos de invocacion, en caso de utilizarlo en objeto que no sea funcion enviara un `python TypeError`
+```python
+import safe_function as Sf
+
+@Sf
+class myclass:
+    pass
+
+ins1 = myclass --> "TypeError"
+```
 
 ## Instalación
 
 En esta sección se listan los pasos necesarios para instalar el paquete.
 
-- Instalar Python 2.7 (se recomienda instalar [Anaconda](https://www.continuum.io/downloads))
-- `brew install dependencia_para_mac` (instala primero cualquier dependencia necesaria)
-- `conda create -n my_environment python=2` (crea un entorno virtual -copia limpia de python- donde instalar el proyecto con Anaconda)
-- `source activate my_environment` (activa el entorno virtual)
-- `pip install -e .` (instala el proyecto en modo edición: los packages listados en el *setup.py* se instalan en el path del entorno virtual de manera que permiten importaciones absolutas)
-- `deactivate` (desactiva el entorno virtual)
+- Instalar Python 3 como minimo (se recomienda instalar la version mas reciente)
 
-Alternativamente, si no se utiliza Anaconda se puede usar *virtualenv* para crear entornos virtuales:
 
-- `cd my_project`
-- `virtualenv venv`
-- `source venv/bin/activate`
-- `pip install -e .`
-- `deactivate`
 
 ## Tests
+Recuerde que las pruebas dependen de el modulo `nose`
+si no lo posee instalelo con 
 
-En esta sección se muestra como correr los tests.
+`pip install nose`
 
+En la libreria se encuentra el archivo `test_safe_function.py` el cual contiene las pruebas de ejecucuion
+en la terminal de `PyCharm` por ejemplo puede correr
 - `nosetests` (corre todos los tests)
+```...........
+----------------------------------------------------------------------
+Ran 11 tests in 0.003s
 
+OK
+```
+ 
 ## Convenciones de estilo
 
 Este proyecto sigue las convenciones de la [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html).
