@@ -1,4 +1,4 @@
-
+[![Python](https://img.shields.io/badge/Python-3.10+-yellow?style=for-the-badge&logo=python&logoColor=white&labelColor=159813)](https://python.org)
 
 <p style='font-size:160%; text-align:center'><img  src="doc/SF-escudo.jpg" alt="Safe Function" width="100px"/></p>
 <div style='font-size:160%; text-align:center;text-decoration: overline; vertical-align:baseline; font-family:courier;'>Safe Function</div>
